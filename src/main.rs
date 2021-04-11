@@ -35,8 +35,13 @@ fn main() {
     for i in 0..optimal.len() {
         let mut row = Row::new(vec![]);
         for j in 0..optimal[i].len() {
-            let cell = Cell::new(&optimal[i][j].to_string());
-            row.add_cell(cell);
+            if optimal[i][j] == 999999999 {
+                let cell = Cell::new("∞");
+                row.add_cell(cell);
+            } else {
+                let cell = Cell::new(&optimal[i][j].to_string());
+                row.add_cell(cell);
+            }
         }
         table.add_row(row);
     }
